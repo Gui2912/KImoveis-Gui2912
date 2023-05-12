@@ -1,2 +1,2 @@
-import { createUserSchema, userSchema } from './users.schemas';
-export {userSchema, createUserSchema}
+import { createUserSchema, userSchema, arrayUserSchema } from './users.schemas';
+export {userSchema, createUserSchema, arrayUserSchema}

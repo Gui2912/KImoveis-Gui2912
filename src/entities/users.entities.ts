@@ -30,13 +30,13 @@ class User {
     password: string;
 
     @CreateDateColumn({nullable: true})
-    createdAt?: Date | string | null | undefined;
+    createdAt?: Date  | null | undefined;
 
     @UpdateDateColumn({nullable: true})
-    updatedAt?: Date | string | null | undefined;
+    updatedAt?: Date  | null | undefined;
 
     @DeleteDateColumn({nullable: true})
-    deletedAt?: Date | string | null | undefined;
+    deletedAt?: Date | null | undefined;
 
     @BeforeInsert()
     async hashPassword() {

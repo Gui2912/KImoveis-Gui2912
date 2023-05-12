@@ -11,8 +11,8 @@ class RealEstate{
     @Column({default: false})
     sold: boolean
 
-    @Column({default: 0, type: 'decimal'})
-    value: number
+    @Column({default: 0, type: 'decimal', precision: 10, scale: 2})
+    value: number | string
 
     @Column({type: 'integer'})
     size: number
@@ -23,7 +23,7 @@ class RealEstate{
     @UpdateDateColumn()
     updatedAt?: Date | string
 
-    @OneToOne(() => Address)
+    @OneToOne(() => Address, {cascade: true})
     @JoinColumn()
     address: Address
 

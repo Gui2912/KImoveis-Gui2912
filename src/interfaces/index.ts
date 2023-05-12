@@ -1,2 +1,3 @@
 import { TCreateUser, TUpdateUser, TUser, TUserRepo } from './users.interfaces';
-export {TCreateUser, TUpdateUser, TUser, TUserRepo}
+import TLoginRequest from './login.interfaces'
+export {TCreateUser, TUpdateUser, TUser, TUserRepo, TLoginRequest}
