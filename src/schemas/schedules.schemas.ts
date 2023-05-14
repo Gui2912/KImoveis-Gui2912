@@ -8,12 +8,14 @@ const scheduleSchema = z.object({
     userId: z.number()
 })
 
-const scheduleRequestSchema = scheduleSchema.omit({id: true})
+const scheduleRequestSchema = scheduleSchema.omit({id: true, userId: true})
+const scheduleRequestWithUserIdSchema = scheduleSchema.omit({id: true})
 
 const schedulesListSchema = z.array(scheduleSchema)
 
 export{
     scheduleRequestSchema,
     scheduleSchema,
-    schedulesListSchema
+    schedulesListSchema,
+    scheduleRequestWithUserIdSchema
 }

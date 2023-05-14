@@ -19,6 +19,7 @@ import {
     schedulesListSchema,
     scheduleRequestSchema,
     scheduleSchema,
+    scheduleRequestWithUserIdSchema,
 } from "./schedules.schemas";
 
 export {
@@ -36,4 +37,5 @@ export {
     scheduleRequestSchema,
     scheduleSchema,
     schedulesListSchema,
+    scheduleRequestWithUserIdSchema,
 };

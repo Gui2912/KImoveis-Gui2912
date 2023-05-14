@@ -12,6 +12,12 @@ import {
     TRequestRealEstate,
     TRequestAddress,
 } from "./realEstate.interfaces";
+
+import {
+    TSchedule,
+    TScheduleRequest,
+    TScheduleRequestWithUserId,
+} from "./schedules.interfaces";
 export {
     TCreateUser,
     TUpdateUser,
@@ -26,4 +32,7 @@ export {
     TRealEstate,
     TRequestRealEstate,
     TRequestAddress,
+    TSchedule,
+    TScheduleRequest,
+    TScheduleRequestWithUserId,
 };

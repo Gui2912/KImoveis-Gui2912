@@ -3,12 +3,17 @@ import {
     createScheduleService,
     listSchedulesOfRealEstateService,
 } from "../services";
+import { TScheduleRequest } from '../interfaces';
 
 const createScheduleController = async (
     req: Request,
     res: Response
 ): Promise<Response> => {
-    const scheduleCreated = await createScheduleService();
+    const userId:number = +res.locals.userId
+    const scheduleData:TScheduleRequest = req.body
+    console.log("USER ID: ", userId);
+    
+    const scheduleCreated = await createScheduleService(scheduleData, userId);
     return res.status(201).json(scheduleCreated);
 };
 
