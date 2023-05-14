@@ -1,5 +1,28 @@
-import { Router } from 'express';
+import { Router } from "express";
+import {
+    ensureBodyIsValidMiddleware,
+    ensureTokenIsValidMiddleware,
+    ensureUserIsAdminMiddleware,
+} from "../middlewares";
+import {
+    createScheduleController,
+    listSchedulesOfRealEstateController,
+} from "../controllers";
+import { scheduleRequestSchema } from "../schemas";
 
-const schedulesRoutes:Router = Router()
+const schedulesRoutes: Router = Router();
 
-export default schedulesRoutes
+schedulesRoutes.post(
+    "",
+    ensureTokenIsValidMiddleware,
+    ensureBodyIsValidMiddleware(scheduleRequestSchema),
+    createScheduleController
+);
+schedulesRoutes.get(
+    "/realEstate/:id",
+    ensureTokenIsValidMiddleware,
+    ensureUserIsAdminMiddleware,
+    listSchedulesOfRealEstateController
+);
+
+export default schedulesRoutes;

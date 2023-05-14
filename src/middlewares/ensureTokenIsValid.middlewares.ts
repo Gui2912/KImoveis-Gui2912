@@ -15,7 +15,6 @@ const ensureTokenIsValidMiddleware = (
     }
 
     token = token.split(" ")[1];
-    console.log(token);
 
     jwt.verify(token, process.env.SECRET_KEY!, (error: any, decoded: any) => {
         if (error) {

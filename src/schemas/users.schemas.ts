@@ -5,8 +5,8 @@ const userSchema = z.object({
     name: z.string().max(45),
     email: z.string().email().max(45),
     admin: z.boolean().optional().default(false),
-    createdAt: z.date().nullable().optional(),
-    updatedAt: z.date().nullable().optional(),
+    createdAt: z.string(),
+    updatedAt: z.string(),
     deletedAt: z.date().nullable().optional(),
 });
 
@@ -16,4 +16,6 @@ const createUserSchema = userSchema
 
 const arrayUserSchema = z.array(userSchema)
 
-export { userSchema, createUserSchema, arrayUserSchema };
+const updateUserSchema = createUserSchema.omit({admin: true}).partial()
+
+export { userSchema, createUserSchema, arrayUserSchema, updateUserSchema };

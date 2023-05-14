@@ -29,14 +29,14 @@ class User {
     @Column({ type: "varchar", length: 120 })
     password: string;
 
-    @CreateDateColumn({nullable: true})
-    createdAt?: Date  | null | undefined;
+    @CreateDateColumn({type: "date"})
+    createdAt?:Date | string;
 
-    @UpdateDateColumn({nullable: true})
-    updatedAt?: Date  | null | undefined;
+    @UpdateDateColumn({type: "date"})
+    updatedAt?:Date | string;
 
     @DeleteDateColumn({nullable: true})
-    deletedAt?: Date | null | undefined;
+    deletedAt: Date | null | undefined;
 
     @BeforeInsert()
     async hashPassword() {

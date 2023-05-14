@@ -2,7 +2,8 @@ import {Request, Response} from 'express'
 import {createCategoryService, listCategoriesService} from '../services'
 
 const createCategoryController = async(req:Request, res:Response):Promise<Response> => {
-    const categoryCreated = await createCategoryService()
+    const categoryData = req.body
+    const categoryCreated = await createCategoryService(categoryData)
     return res.status(201).json(categoryCreated)
 }
 

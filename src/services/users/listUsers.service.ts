@@ -5,17 +5,8 @@ import { arrayUserSchema } from '../../schemas';
 
 const listUsersService = async (): Promise<TUser[]> => {
     const userRepo: TUserRepo = AppDataSource.getRepository(User);
-    const users: TUser[] = await userRepo.find();
-
-    const transformedUsers: TUser[] = users.map(user => {
-      return {
-        ...user,
-        createdAt: user.createdAt && new Date(user.createdAt) ,
-        updatedAt: user.updatedAt && new Date(user.updatedAt) ,
-      };
-    });
-    
-    return arrayUserSchema.parse(transformedUsers);
+    const users: User[] = await userRepo.find();
+    return arrayUserSchema.parse(users);
   };
 
 export default listUsersService

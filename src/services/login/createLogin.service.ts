@@ -32,6 +32,7 @@ const createLoginService = async (payload: TLoginRequest): Promise<string> => {
     const token:string = jwt.sign(
         {
             admin: user.admin,
+            id: user.id
         },
         process.env.SECRET_KEY!,
         {

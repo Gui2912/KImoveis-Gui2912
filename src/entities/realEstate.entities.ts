@@ -17,10 +17,10 @@ class RealEstate{
     @Column({type: 'integer'})
     size: number
 
-    @CreateDateColumn()
+    @CreateDateColumn({type: "date"})
     createdAt?: Date | string
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({type: "date"})
     updatedAt?: Date | string
 
     @OneToOne(() => Address, {cascade: true})

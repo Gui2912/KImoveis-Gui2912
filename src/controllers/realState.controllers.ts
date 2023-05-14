@@ -9,7 +9,8 @@ const createRealEstateController = async (
     req: Request,
     res: Response
 ): Promise<Response> => {
-    const realEstateCreated = await createRealEstateService();
+    const realEstateData = req.body
+    const realEstateCreated = await createRealEstateService(realEstateData);
     return res.status(201).json(realEstateCreated);
 };
 
@@ -25,7 +26,8 @@ const listRealEstatesByCategoryController = async (
     req: Request,
     res: Response
 ): Promise<Response> => {
-    const realEstateByCatListed = await listRealEstatesByCategoryService();
+    const categoryId: number = +req.params.id
+    const realEstateByCatListed = await listRealEstatesByCategoryService(categoryId);
     return res.status(200).json(realEstateByCatListed);
 };
 

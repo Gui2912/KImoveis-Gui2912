@@ -16,7 +16,8 @@ const listSchedulesOfRealEstateController = async (
     req: Request,
     res: Response
 ): Promise<Response> => {
-    const scheduleOfRealEstateListed = await listSchedulesOfRealEstateService();
+    const realEstateId: number = +req.params.id
+    const scheduleOfRealEstateListed = await listSchedulesOfRealEstateService(realEstateId);
     return res.status(200).json(scheduleOfRealEstateListed);
 };
 
