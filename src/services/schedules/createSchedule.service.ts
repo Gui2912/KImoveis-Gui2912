@@ -7,6 +7,7 @@ import {
 import { RealEstate, Schedule, User } from "../../entities";
 import { AppDataSource } from "../../data-source";
 import { AppError } from "../../errors";
+import { scheduleSchema } from '../../schemas';
 
 const createScheduleService = async (
     scheduleData: TScheduleRequest,
@@ -24,19 +25,20 @@ const createScheduleService = async (
     const realEstateFind: RealEstate | null = await realEstateRepo.findOneBy({
         id: +scheduleData.realEstateId,
     });
-    if(!realEstateFind) throw new AppError("Real estate not found", 404)
+    if (!realEstateFind) throw new AppError("RealEstate not found", 404);
 
     const scheduleWithUserId: TScheduleRequestWithUserId = {
         ...scheduleData,
         userId,
     };
 
-    const createSchedule: Schedule | null =
-        scheduleRepo.create(scheduleWithUserId);
-
-    await scheduleRepo.save(createSchedule);
-
-    return createSchedule;
+    const createSchedule = scheduleRepo
+        .createQueryBuilder()
+        .insert()
+        .values(scheduleWithUserId)
+        .returning("*")
+        .execute()
+    return scheduleSchema.parse(createSchedule);
 };
 
 export default createScheduleService;

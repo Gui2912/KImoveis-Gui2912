@@ -7,12 +7,11 @@ const addressSchema = z.object({
     number: z.string().max(7).optional(),
     city: z.string().max(20),
     state: z.string().max(2),
-    categoryId: z.number()
 });
 
 const realEstateSchema = z.object({
     id: z.number(),
-    value: z.number(),
+    value: z.union([z.number(), z.string()]),
     address: addressSchema,
     categoryId: z.number(),
     sold: z.boolean().default(false),
